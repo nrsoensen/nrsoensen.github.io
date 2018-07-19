@@ -1,73 +1,59 @@
-/*
 var ourLoc;
 var view;
 var map;
 
 
 function init() {
-  ourLoc = ol.proj.fromLonLat([41, 28]);
 
-  view = new ol.View({
-    center: ourLoc,
-    zoom: 6
-  });
-
-  map = new ol.Map({
-    target: 'map',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
-      })
-    ],
-
-    loadTilesWhileAnimating: true,
-    view: view
-
-  });
-}
-
-window.onload = init;
-*/
-
-
-var ourLoc;
-var view;
-var map;
-
-// Step 3: We should initalize our variables!
-function init() {
-	// Initalize things here
 	ourLoc = ol.proj.fromLonLat([41.043316, 28.862457]);
 
 	view = new ol.View({
 		center: ourLoc,
-		zoom: 6 // Students can play around with the starting zoom.
+		zoom: 5
 	});
 
 	map = new ol.Map({
-		target: 'map', // The "Target" is our <div> name.
+		target: 'map',
 		layers: [
 		  new ol.layer.Tile({
-		    source: new ol.source.OSM() // Explain: this is a required variable.
+		    source: new ol.source.OSM()
 		  })
-		  // Explain: Open Layer offers different types of layers. Layers are like
-		  // different brushes used to make the same image. They look different.
-		  // Some might take more time than others.
 		],
-		// Note from the View Animation website:
-		// Improve user experience by loading tiles while animating. Will make
-		// animations stutter on mobile or slow devices.
 		loadTilesWhileAnimating: true,
 		view: view
 	});
 }
 
+
 function panHome(){
+	var homeName = document.getElementById("home-name").value;
+	var lon = 0.0
+  var lat = 0.0
+
+	var question = "https://restcountries.eu/rest/v2/name/"+homeName;
+	question = question.replace(/ /g, "%20");
+
+	var countryRequest = new XMLHttpRequest();
+  countryRequest.open('GET', question, false);
+  countryRequest.send();
+
+  if(countryRequest.readyState != 4 || countryRequest.status != 200 || countryRequest.responseText === ""){
+    window.console.error("Request had an error!");
+    return;
+  }
+
+	var countryInformation = JSON.parse(countryRequest.responseText);
+
+  lat = countryInformation[0].latlng[0];
+  lon = countryInformation[0].latlng[1];
+
+  var home = ol.proj.fromLonLat([lon, lat]);
   view.animate({
-    center: ourLoc,
+    center: home,
     duration: 2000
   });
 }
+
 
 function panToLocation(){
   var countryName = document.getElementById("country-name").value;
@@ -106,5 +92,36 @@ function panToLocation(){
 
 }
 
-// Step 4: We can run the init function when the window loads.
+
+function panToCapital(){
+	var capitalName = document.getElementById("capital-name").value;
+	var lon = 0.0
+	var lat = 0.0
+
+	var ask = "https://restcountries.eu/rest/v2/capital/"+capitalName;
+	ask = ask.replace(/ /g, "%20");
+
+	var capitalRequest = new XMLHttpRequest();
+	capitalRequest.open('GET', ask, false);
+	capitalRequest.send();
+
+	if(capitalRequest.readyState != 4 || capitalRequest.status != 200 || capitalRequest.responseText === ""){
+		window.console.error("Request had an error!");
+		return;
+	}
+
+	var capitalInformation = JSON.parse(capitalRequest.responseText);
+
+	lat = capitalInformation[0].latlng[0];
+	lon = capitalInformation[0].latlng[1];
+
+	var capital = ol.proj.fromLonLat([lon, lat]);
+    view.animate({
+      center: capital,
+      duration: 2000
+    });
+}
+
+
+
 window.onload = init;
