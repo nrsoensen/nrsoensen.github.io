@@ -47,229 +47,233 @@
 
   <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
   <script>
-    map = new OpenLayers.Map("mapdiv");
+    function init() {
+      map = new OpenLayers.Map("mapdiv");
 
-    map.addLayer(new OpenLayers.Layer.OSM());
+      map.addLayer(new OpenLayers.Layer.OSM());
 
-    var oneTail = new OpenLayers.LonLat( -87.673119, 41.920974 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var oneTail = new OpenLayers.LonLat( -87.673119, 41.920974 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var paws = new OpenLayers.LonLat( -87.658689, 41.917837 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var paws = new OpenLayers.LonLat( -87.658689, 41.917837 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var antiCruelty = new OpenLayers.LonLat( -87.633563, 41.891414 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var antiCruelty = new OpenLayers.LonLat( -87.633563, 41.891414 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var felines = new OpenLayers.LonLat( -87.671651, 41.997946 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var felines = new OpenLayers.LonLat( -87.671651, 41.997946 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var newLeash = new OpenLayers.LonLat( -87.678731, 41.954157 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var newLeash = new OpenLayers.LonLat( -87.678731, 41.954157 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var fidoFriend = new OpenLayers.LonLat( -87.659096, 41.891649 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
-    var harmonyHouse = new OpenLayers.LonLat( -87.691431, 41.934146 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var fidoFriend = new OpenLayers.LonLat( -87.659096, 41.891649 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
+      var harmonyHouse = new OpenLayers.LonLat( -87.691431, 41.934146 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var lakeShore = new OpenLayers.LonLat( -87.838764, 42.015286 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
+      var lakeShore = new OpenLayers.LonLat( -87.838764, 42.015286 )
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
 
-    var zoom=12;
+      var zoom=12;
 
-    var markers = new OpenLayers.Layer.Markers("Marker");
-    map.addLayer(markers);
-/*
-    markers.addMarker(new OpenLayers.Marker(oneTail));
-    markers.addMarker(new OpenLayers.Marker(paws));
-    markers.addMarker(new OpenLayers.Marker(antiCruelty));
-    markers.addMarker(new OpenLayers.Marker(felines));
-    markers.addMarker(new OpenLayers.Marker(newLeash));
-    markers.addMarker(new OpenLayers.Marker(fidoFriend));
-    markers.addMarker(new OpenLayers.Marker(harmonyHouse));
-    markers.addMarker(new OpenLayers.Marker(lakeShore));
-*/
-    map.setCenter (harmonyHouse, zoom);
+      var markers = new OpenLayers.Layer.Markers("Marker");
+      map.addLayer(markers);
+  /*
+      markers.addMarker(new OpenLayers.Marker(oneTail));
+      markers.addMarker(new OpenLayers.Marker(paws));
+      markers.addMarker(new OpenLayers.Marker(antiCruelty));
+      markers.addMarker(new OpenLayers.Marker(felines));
+      markers.addMarker(new OpenLayers.Marker(newLeash));
+      markers.addMarker(new OpenLayers.Marker(fidoFriend));
+      markers.addMarker(new OpenLayers.Marker(harmonyHouse));
+      markers.addMarker(new OpenLayers.Marker(lakeShore));
+  */
+      map.setCenter (harmonyHouse, zoom);
 
-    popup1 = new OpenLayers.Popup("oneTail",
-              oneTail,
-              new OpenLayers.Size(120,100),
-              "<img src='myimg/oneTail.png' style='width:100%'>",
-              true);
+      popup1 = new OpenLayers.Popup("oneTail",
+                oneTail,
+                new OpenLayers.Size(120,100),
+                "<img src='myimg/oneTail.png' style='width:100%'>",
+                true);
 
-    popup2 = new OpenLayers.Popup("paws",
-              paws,
-              new OpenLayers.Size(120,130),
-              "<img src='myimg/pawschicago.png' style='width:100%'>",
-              true);
+      popup2 = new OpenLayers.Popup("paws",
+                paws,
+                new OpenLayers.Size(120,130),
+                "<img src='myimg/pawschicago.png' style='width:100%'>",
+                true);
 
-    popup3 = new OpenLayers.Popup("antiCruelty",
-              antiCruelty,
-              new OpenLayers.Size(120,140),
-              "<img src='myimg/anticruelty.png' style='width:100%'>",
-              true);
+      popup3 = new OpenLayers.Popup("antiCruelty",
+                antiCruelty,
+                new OpenLayers.Size(120,140),
+                "<img src='myimg/anticruelty.png' style='width:100%'>",
+                true);
 
-    popup4 = new OpenLayers.Popup("felines",
-              felines,
-              new OpenLayers.Size(124,100),
-              "<img src='myimg/felines.png' style='width:100%'>",
-              true);
+      popup4 = new OpenLayers.Popup("felines",
+                felines,
+                new OpenLayers.Size(124,100),
+                "<img src='myimg/felines.png' style='width:100%'>",
+                true);
 
-    popup5 = new OpenLayers.Popup("newLeash",
-              newLeash,
-              new OpenLayers.Size(120,120),
-              "<img src='myimg/newLeash.png' style='width:100%'>",
-              true);
+      popup5 = new OpenLayers.Popup("newLeash",
+                newLeash,
+                new OpenLayers.Size(120,120),
+                "<img src='myimg/newLeash.png' style='width:100%'>",
+                true);
 
-    popup6 = new OpenLayers.Popup("fidoFriend",
-              fidoFriend,
-              new OpenLayers.Size(120,150),
-              "<img src='myimg/fidoFriend.png' style='width:100%'>",
-              true);
+      popup6 = new OpenLayers.Popup("fidoFriend",
+                fidoFriend,
+                new OpenLayers.Size(120,150),
+                "<img src='myimg/fidoFriend.png' style='width:100%'>",
+                true);
 
-    popup7 = new OpenLayers.Popup("harmonyHouse",
-              harmonyHouse,
-              new OpenLayers.Size(120,120),
-              "<img src='myimg/harmonyHouse.png' style='width:100%'>",
-              true);
+      popup7 = new OpenLayers.Popup("harmonyHouse",
+                harmonyHouse,
+                new OpenLayers.Size(120,120),
+                "<img src='myimg/harmonyHouse.png' style='width:100%'>",
+                true);
 
-    popup8 = new OpenLayers.Popup("lakeShore",
-              lakeShore,
-              new OpenLayers.Size(120,120),
-              "<img src='myimg/lakeshore.png' style='width:100%'>",
-              true);
-/*
-    map.addPopup(popup1);
-    map.addPopup(popup2);
-    map.addPopup(popup3);
-    map.addPopup(popup4);
-    map.addPopup(popup5);
-    map.addPopup(popup6);
-    map.addPopup(popup7);
-    map.addPopup(popup8);
-*/
-    marker = new OpenLayers.Marker(oneTail);
-    markers.addMarker(marker);
-    marker.inflate(1.5);
-    marker.events.register("click", marker, function(e){
-        if(popup1.visible()){
-          map.addPopup(popup1);
-        }
-        else{
-          popup1.show();
-        }
-    });
+      popup8 = new OpenLayers.Popup("lakeShore",
+                lakeShore,
+                new OpenLayers.Size(120,120),
+                "<img src='myimg/lakeshore.png' style='width:100%'>",
+                true);
+  /*
+      map.addPopup(popup1);
+      map.addPopup(popup2);
+      map.addPopup(popup3);
+      map.addPopup(popup4);
+      map.addPopup(popup5);
+      map.addPopup(popup6);
+      map.addPopup(popup7);
+      map.addPopup(popup8);
+  */
+      marker = new OpenLayers.Marker(oneTail);
+      markers.addMarker(marker);
+      marker.inflate(1.5);
+      marker.events.register("click", marker, function(e){
+          if(popup1.visible()){
+            map.addPopup(popup1);
+          }
+          else{
+            popup1.show();
+          }
+      });
 
-    marker2 = new OpenLayers.Marker(paws);
-    markers.addMarker(marker2);
-    marker2.inflate(2);
-    marker2.setUrl('myimg/mappawpin.png');
-    marker2.events.register("click", marker2, function(e){
-        if(popup2.visible()){
-          map.addPopup(popup2);
-        }
-        else{
-          popup2.show();
-        }
-    });
+      marker2 = new OpenLayers.Marker(paws);
+      markers.addMarker(marker2);
+      marker2.inflate(2);
+      marker2.setUrl('myimg/mappawpin.png');
+      marker2.events.register("click", marker2, function(e){
+          if(popup2.visible()){
+            map.addPopup(popup2);
+          }
+          else{
+            popup2.show();
+          }
+      });
 
-    marker3 = new OpenLayers.Marker(antiCruelty);
-    markers.addMarker(marker3);
-    marker3.inflate(2);
-    marker3.setUrl('myimg/mappawpin.png');
-    marker3.events.register("click", marker3, function(e){
-        if(popup3.visible()){
-          map.addPopup(popup3);
-        }
-        else{
-          popup3.show();
-        }
-    });
+      marker3 = new OpenLayers.Marker(antiCruelty);
+      markers.addMarker(marker3);
+      marker3.inflate(2);
+      marker3.setUrl('myimg/mappawpin.png');
+      marker3.events.register("click", marker3, function(e){
+          if(popup3.visible()){
+            map.addPopup(popup3);
+          }
+          else{
+            popup3.show();
+          }
+      });
 
-    marker4 = new OpenLayers.Marker(felines);
-    markers.addMarker(marker4);
-    marker4.inflate(1.5);
-    marker4.events.register("click", marker4, function(e){
-        if(popup4.visible()){
-          map.addPopup(popup4);
-        }
-        else{
-          popup4.show();
-        }
-    });
+      marker4 = new OpenLayers.Marker(felines);
+      markers.addMarker(marker4);
+      marker4.inflate(1.5);
+      marker4.events.register("click", marker4, function(e){
+          if(popup4.visible()){
+            map.addPopup(popup4);
+          }
+          else{
+            popup4.show();
+          }
+      });
 
-    marker5 = new OpenLayers.Marker(newLeash);
-    markers.addMarker(marker5);
-    marker5.inflate(1.5);
-    marker5.events.register("click", marker5, function(e){
-        if(popup5.visible()){
-          map.addPopup(popup5);
-        }
-        else{
-          popup5.show();
-        }
-    });
+      marker5 = new OpenLayers.Marker(newLeash);
+      markers.addMarker(marker5);
+      marker5.inflate(1.5);
+      marker5.events.register("click", marker5, function(e){
+          if(popup5.visible()){
+            map.addPopup(popup5);
+          }
+          else{
+            popup5.show();
+          }
+      });
 
-    marker6 = new OpenLayers.Marker(fidoFriend);
-    markers.addMarker(marker6);
-    marker6.inflate(1.5);
-    marker6.events.register("click", marker6, function(e){
-        if(popup6.visible()){
-          map.addPopup(popup6);
-        }
-        else{
-          popup6.show();
-        }
-    });
+      marker6 = new OpenLayers.Marker(fidoFriend);
+      markers.addMarker(marker6);
+      marker6.inflate(1.5);
+      marker6.events.register("click", marker6, function(e){
+          if(popup6.visible()){
+            map.addPopup(popup6);
+          }
+          else{
+            popup6.show();
+          }
+      });
 
-    marker7 = new OpenLayers.Marker(harmonyHouse);
-    markers.addMarker(marker7);
-    marker7.inflate(2);
-    marker7.setUrl('myimg/mappawpin.png');
-    marker7.events.register("click", marker7, function(e){
-        if(popup7.visible()){
-          map.addPopup(popup7);
-        }
-        else{
-          popup7.show();
-        }
-    });
+      marker7 = new OpenLayers.Marker(harmonyHouse);
+      markers.addMarker(marker7);
+      marker7.inflate(2);
+      marker7.setUrl('myimg/mappawpin.png');
+      marker7.events.register("click", marker7, function(e){
+          if(popup7.visible()){
+            map.addPopup(popup7);
+          }
+          else{
+            popup7.show();
+          }
+      });
 
-    marker8 = new OpenLayers.Marker(lakeShore);
-    markers.addMarker(marker8);
-    marker8.inflate(2);
-    marker8.setUrl('myimg/mappawpin.png');
-    marker8.events.register("click", marker8, function(e){
-        if(popup8.visible()){
-          map.addPopup(popup8);
-        }
-        else{
-          popup8.show();
-        }
-    });
+      marker8 = new OpenLayers.Marker(lakeShore);
+      markers.addMarker(marker8);
+      marker8.inflate(2);
+      marker8.setUrl('myimg/mappawpin.png');
+      marker8.events.register("click", marker8, function(e){
+          if(popup8.visible()){
+            map.addPopup(popup8);
+          }
+          else{
+            popup8.show();
+          }
+      });
+    }
+
+    window.onload(init())
 
   </script>
 </body></html>
